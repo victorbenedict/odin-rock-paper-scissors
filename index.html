@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Project: Rock Paper Scissors</title>
+	
+</head>
+<body>
+<script>
+
+//initialize score
+let computerScore = 0;
+let playerScore = 0;
+let computerHands;
+let playerHands;
+let round = 1;
+
+while (playerScore < 5 && computerScore <5){
+	computerHands = Math.floor(Math.random()*3) + 1; // computer selects hands
+	playerHands = prompt("Round " + round + "\nRock = 1, Paper = 2, Scissors = 3"); //player selects hands
+	console.log("Round "+ round);
+	console.log("Player plays : " + handsIntToString(playerHands));
+	console.log("Computer plays : " + handsIntToString(computerHands));
+	console.log("Result: " + fight(playerHands,computerHands));
+	console.log("Score\nPlayer: " + playerScore + "\nComputer: " + computerScore); //Show score
+	round++;
+}
+matchResult();
+
+function handsIntToString(x){
+	if (x == 1){return "Rock";}
+	else if (x == 2) {return "Paper";}
+	else if (x == 3) {return "Scissors";}	
+	else {return "Invalid number!";}
+}
+function fight(p, c){
+	if (p == c) {return "Draw"}
+	if (p == 1 && c == 3 || 
+		p == 2 && c == 1 || 
+		p == 3 && c == 2) {
+			playerScore ++; 
+			return "You win!";
+		} 
+	else {computerScore ++;
+		return "You lose!";	}
+}
+
+function matchResult(){
+	if (playerScore == 5){
+		alert("You won the match!");
+	}
+	else {alert("Computer won the match!");}
+
+}
+
+
+
+</script>
+</body>
+</html>
