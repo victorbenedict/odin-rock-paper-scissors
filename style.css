@@ -29,7 +29,11 @@
 
 }
 
-.display_player, .display_computer{
+.display_player, .display_computer {
 	width: 100px;
 	height: 70px;
+}
+
+.display_result {
+	text-align: center;
 }
