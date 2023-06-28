@@ -1,75 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Project: Rock Paper Scissors</title>
-	
+<title>Project: Rock Paper Scissors</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div>
-	<button id="rock">Rock</button>
-	<button id="paper">Paper</button>
-	<button id="scissors">Scissors</button>
-	<hr>
-</div>
-
-<script>
-
-const hands = ['rock','paper','scissors'];
-let playerScore = 0, computerScore = 0;
-
-const body = document.body
-const buttons = document.querySelectorAll('button');
-const computerSelect = () => hands[Math.floor(Math.random() * 2)];
-const matchDiv = document.createElement('div');
-const resultDiv = document.createElement('div');
-const scoreDiv = document.createElement('div');
-
-
-body.append(scoreDiv);
-body.append(matchDiv);
-body.append(resultDiv);
-
-buttons.forEach(button => {
-	button.addEventListener('click', () => {		
-		
-		const playerHand = button.id		;
-		const computerHands = computerSelect();
-		scoreDiv.innerText = 'Scores - You: ' + playerScore + ' | Computer: ' + computerScore
-		matchDiv.innerText = 'Player plays   : ' + (playerHand) + ' \n ' + 'Computer plays : ' +  computerHands
-		resultDiv.innerText = 'Result: '+ game(playerHand,computerHands)	
-
-		if (playerScore > 5) {			
-			resultDiv.innerText = 'Result: You won the match! \n Reload the page to play again';
-			disableButtons();
-		}
-		if (computerScore > 5) {
-			resultDiv.innerText = 'Result:You lose the match! \n Reload the page to play again';
-			disableButtons();
-		}		
-	
-})})
-
-
-function disableButtons() {
-    buttons.forEach(elem => {
-        elem.disabled = true
-    })
-}
-
-function game(p1,p2){
-	if(p1 === p2){return 'Draw!';}
-  else if(
-		(p1 == 'scissors' && p2 == 'paper')||
-		(p1 == 'rock' && p2 == 'scissors')||
-		(p1 == 'paper' && p2 == 'rock')){
-			playerScore += 1;
-    	return 'Player won the round!'}
-  else{computerScore += 1; return 'Computer won the round!';}}
-  
-</script>
-
+	<div class="display_container">
+		<div class="display_player">
+			<div class="player_hands">?</div>
+			<div class="player_score">Player: 0</div>
+		</div>
+		<div class="display_computer">
+			<div class="computer_hands">?</div>
+			<div class="computer_score">Computer: 0</div>
+		</div>
+	</div>
+	<div class="button_container">
+		<button class="btn_rock">✊</button>
+		<button class="btn_paper">✋</button>
+		<button class="btn_scissors">✌</button>
+	</div>
+	<div class="restart_container">
+		<button class="btn_restart">Restart Game</button>
+	</div>
+<script src="script.js"></script>
 </body>
 </html>
