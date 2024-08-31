@@ -1,10 +1,3 @@
-# Project-Rock-Paper-Scissors
-
-Based on The Odin Project: 
-  https://www.theodinproject.com/lessons/foundations-rock-paper-scissors
-  https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors
-
-
 # Rock Paper Scissors
 
 - A Rock, Paper, Scissors game created using vanilla HTML, CSS, and JavaScript, and over-engineered with Object-Oriented Programming (OOP).
