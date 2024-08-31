@@ -23,6 +23,7 @@ class Player {
     this.name = name;
     this.type = type;
     this.score = score;
+    this.plays = [];
   }
 
   addScore() {
@@ -30,16 +31,24 @@ class Player {
   }
 
   selectHand(handCode) {
+    let selectedHand;
     const getHand = (code) => {
-      Object.keys(Hand).find((key) => Hand[key] === code);
+      return Object.keys(Hand).find((key) => Hand[key] === code);
     };
 
     if (this.type === PlayerType.Bot) {
       const randomCode = Math.ceil(Math.random() * 3);
-      return getHand(randomCode);
+      selectedHand = Hand[getHand(randomCode)];
+    } else {
+      selectedHand = Hand[getHand(handCode)];
     }
+    this.plays.push(selectedHand);
 
-    return getHand(handCode);
+    return selectedHand;
+  }
+
+  getLastPlay() {
+    return this.plays[this.plays.length - 1];
   }
 }
 
@@ -74,7 +83,9 @@ export class Game {
     }
   }
 
-  playRound(humanHand, botHand) {
+  playRound(humanHand) {
+    const botPlay = this.bot.selectHand();
+    const humanPlay = this.player.selectHand(humanHand);
     let roundResult = GameResult.Draw;
     ++this.round;
 
@@ -84,15 +95,15 @@ export class Game {
       );
     };
 
-    if (isRightPlayerWins(humanHand, botHand)) {
+    if (isRightPlayerWins(humanPlay, botPlay)) {
       this.player.addScore();
       roundResult = GameResult.Human;
     }
-    if (isRightPlayerWins(botHand, humanHand)) {
+    if (isRightPlayerWins(botPlay, humanPlay)) {
       this.bot.addScore();
       roundResult = GameResult.Bot;
     }
 
-    return [roundResult, this.isMatchOver(), this.getWinner()];
+    return roundResult;
   }
 }

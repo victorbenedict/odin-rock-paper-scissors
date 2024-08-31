@@ -3,3 +3,149 @@
 *::after {
   box-sizing: border-box;
 }
+
+:root {
+  --primary-color: rgb(37, 41, 46);
+  --secondary-color: rgb(246, 248, 250);
+  --hover-color: rgb(200, 210, 220);
+  --active-color: rgb(120, 130, 140);
+  --image-rock: url('./public/rock.png');
+  --image-paper: url('./public/paper.png');
+  --image-scissors: url('./public/scissors.png');
+}
+
+html,
+body {
+  font-family: 'Nerko One', cursive;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+body {
+  align-items: center;
+}
+
+header {
+  align-self: stretch;
+  color: white;
+  background-color: var(--primary-color);
+  text-align: center;
+  font-size: x-large;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.gameboard {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-content: flex-start;
+}
+
+.round {
+  display: flex;
+  justify-content: space-between;
+  font-size: x-large;
+}
+
+.restart {
+  font-size: x-large;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.restart:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.1);
+}
+
+.restart:active {
+  background-color: var(--active-color);
+  transform: scale(0.9);
+}
+
+.display {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.display > div {
+  text-align: center;
+}
+
+.human {
+  height: 150px;
+  width: 50%;
+  border-radius: 50%;
+  background-size: contain;
+  transform: rotate(-90deg);
+}
+
+.bot {
+  height: 150px;
+  width: 50%;
+  border-radius: 50%;
+  background-size: cover;
+  transform: rotate(90deg);
+}
+
+.control button {
+  margin-inline: 10px;
+  padding: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.control button:hover {
+  background-color: var(--hover-color);
+  transform: rotate(-90deg) scale(1.1);
+}
+
+.control button:active {
+  background-color: var(--active-color);
+  transform: rotate(-90deg) scale(0.9);
+  transition: background-color 0.3s;
+}
+
+#btnRock,
+.rock {
+  background-image: var(--image-rock);
+}
+
+#btnPaper,
+.paper {
+  background-image: var(--image-paper);
+}
+
+#btnScissors,
+.scissors {
+  background-image: var(--image-scissors);
+}
+
+footer {
+  text-align: center;
+  align-self: stretch;
+  background-color: var(--secondary-color);
+}
